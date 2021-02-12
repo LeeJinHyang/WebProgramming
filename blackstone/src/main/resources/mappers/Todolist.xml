@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mappers/User.xml -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="todolist"> <!-- mybatis는 namespace필수!! -->
+	<insert id="insert">
+		insert into todolist(content, todocheck, date)
+		values(#{content}, #{todocheck}, #{date})
+	</insert>
+	<select id="selectByTodoNo" resultType="Todolist">
+		select *
+		from todolist
+		where todono = #{todono}
+	</select>
+	<select id="selectByContent" resultType="Todolist">
+		select *
+		from todolist
+		where content LIKE #{content}
+	</select>
+	<select id="selectByCheck" resultType="Todolist">
+		select *
+		from todolist
+		where todocheck = #{todocheck}
+	</select>
+	<select id="selectByDate" resultType="Todolist">
+		select * 
+		from todolist
+		where date = #{date}
+	</select>
+	<update id="update">
+		update todolist
+		set content = #{content}, todocheck = #{todocheck}, date = #{date}
+		where todono = #{todono}
+	</update>
+	<delete id="delete">
+		delete from todolist
+		where todono = #{todono}
+	</delete>
+</mapper>

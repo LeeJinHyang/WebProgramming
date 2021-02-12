@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mappers/User.xml -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="comment"> <!-- mybatis는 namespace필수!! -->
+	<insert id="insert">
+		insert into comment(boardNo, content,date,likes)
+		values(#{boardNo}, #{content},#{date},#{likes})
+	</insert>
+	<select id="selectByCommentNo" resultType="Comment">
+		select (commentNo, boardNo, content,date,likes)
+		from comment
+		where commentNo = #{commentNo}
+	</select>
+	<select id="selectByBoardNo" resultType="Comment">
+		select (commentNo, boardNo, content,date,likes)
+		from comment
+		where boardNo = #{boardNo}
+	</select>
+	
+	<select id="selectByUserId" resultType="Comment">
+		select (commentNo, boardNo, content,date,likes)
+		from comment
+		where userId = #{userId}
+	</select>
+	<update id="updateByCommentNo">
+		update comment
+		set content = #{content}, date = #{date}, likes = #{likes}
+		where boardNo = #{boardNo}
+	</update>
+	<delete id="deleteByCommentNo">
+		delete from comment
+		where commentNo = #{commentNo}
+	</delete>
+</mapper>

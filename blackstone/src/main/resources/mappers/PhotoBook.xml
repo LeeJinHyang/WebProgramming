@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mappers/User.xml -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="photo"> <!-- mybatis는 namespace필수!! -->
+	<insert id="insert">
+		insert into photobook(name,userid,path,date,likes)
+		values(#{name},#{userid},#{path},#{date},#{likes})
+	</insert>
+	<select id="selectByPhotoNo" resultType="Diary">
+		select *
+		from photobook
+		where photono = #{photono}
+	</select>
+	<select id="selectByName">
+		select * 
+		from photobook
+		where name LIKE #{name}
+	</select>
+	<select id="selectByUid">
+		select *
+		from photobook
+		where userid = #{uid}
+	</select>
+	<update id="update">
+		update photobook
+		set name = #{name},userid = #{userid},path = #{path},date = #{date},likes = #{likes}
+		where photono = #{photono}
+	</update>
+	<delete id="delete">
+		delete from photobook
+		where photono = #{photono}
+	</delete>
+</mapper>

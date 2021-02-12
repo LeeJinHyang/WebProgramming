@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mappers/User.xml -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user"> <!-- mybatis는 namespace필수!! -->
+   <insert id="insert">
+       insert into user(userid,password,name,email,phone)
+		values (#{userid}, #{password}, #{name}, #{email}, #{phone})
+	</insert>
+	<select id="selectByUserid" resultType="User">
+		select userid, password,name,email,phone
+		from user
+		where userid = #{uid}
+	</select>	
+	<select id="selectByEmail" resultType="User">
+		select userid, password,name,email,phone
+		from user
+		where email = #{email}
+	</select>
+	<update id="updateByUserid">
+		update user
+		set password = #{password}, name=#{name}, email = #{email}, phone = #{phone}
+		where userid = #{userid}
+	</update>
+	<delete id="deleteByUserid">
+		delete from user
+		where userid = #{uid}
+	</delete>
+</mapper>

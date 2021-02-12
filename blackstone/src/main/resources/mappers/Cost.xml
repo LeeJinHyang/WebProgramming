@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mappers/User.xml -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cost"> <!-- mybatis는 namespace필수!! -->
+	<insert id="insert">
+		insert into cost(EI,content,price, total,date)
+		values(#{EI},#{content},#{price}, #{total},#{date});
+	</insert>
+	<select id="selectByCostNo" resultType="Cost">
+		select costno, EI,content,price, total,date
+		from cost
+		where costno = #{costno};
+	</select>
+	<select id="selectByDate" resultType="Cost">
+		<![CDATA[ 
+		select costno, EI,content,price, total,date
+		from cost
+		where date >= #{start} and date < #{date};
+		]]>
+	</select>
+	<update id="updateByCostNo">
+		update cost
+		set EI = #{EI},content = #{content},price = #{price}, total = #{total},date = #{date}
+		where costno = #{costno}
+	</update>
+	<delete id="deleteByCostNo">
+		delete from cost
+		where costno = #{costno}
+	</delete>
+</mapper>

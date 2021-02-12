@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mappers/User.xml -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board"> <!-- mybatis는 namespace필수!! -->
+	<insert id="insert">
+		insert into board(subject, userId, date,likes)
+		valus(#{subject}, #{userId}, #{date},#{likes})
+	</insert>
+	<select id="selectByBoardNo" resultType="Board">
+		select (boardNo, subject, userId, date,likes)
+		from board
+		where boardno = #{boardNo}
+	</select>
+	<select id="selectByUserid" resultType="Board">
+		select (boardNo, subject, userId, date,likes)
+		from board
+		where userId = #{userId}
+	</select>
+	<select id="selectBySubject" resultType = "Board">
+		select (boardNo, subject, userId, date,likes)
+		from board
+		where subject LIKE #{subject}
+	</select>
+	<update id="updateByBoardNo">
+		update board
+		set subject = #{subject}, userId = #{userId}, date = #{date},likes = #{likes}
+		where boardNo = #{boardNo} 
+	</update>
+	<delete id="deleteByBoardNo">
+		delete from board
+		where boardNo = #{boardNo}
+	</delete>
+</mapper>

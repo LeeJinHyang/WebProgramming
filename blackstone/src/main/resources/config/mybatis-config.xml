@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+ <!-- mybatis-config.xml -->
+ 	<typeAliases>
+       <package name="com.jinhyang.blackstone.dto"/>
+    </typeAliases>
+   	<mappers>
+   		<mapper resource="mappers/Board.xml"/>		
+   		<mapper resource="mappers/Comment.xml"/>		
+   		<mapper resource="mappers/Commentp.xml"/>		
+   		<mapper resource="mappers/Cost.xml"/>		
+   		<mapper resource="mappers/Diary.xml"/>		
+   		<mapper resource="mappers/PhotoBook.xml"/>		
+   		<mapper resource="mappers/Todolist.xml"/>		
+    	<mapper resource="mappers/User.xml"/>		
+   	</mappers>
+</configuration>
