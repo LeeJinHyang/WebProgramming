@@ -1,0 +1,21 @@
+server:
+  port: 8070
+
+spring:
+  datasource:
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: jdbc:log4jdbc:mariadb://localhost:3305/catblog?characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: root
+  jpa:
+    database-platform : org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: Asia/Seoul
+          batch_size: 100
+        default_batch_fetch_size: 100
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
